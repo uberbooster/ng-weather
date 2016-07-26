@@ -22,7 +22,8 @@ function WeatherServiceF($http){
     return $http.get(url, config)
                 .then(function(response){
                   service.weather = response.data;
-                  console.log("Hourly: ",service.weather);
+                  console.log("Hourly -in getHourlyDataF: ",service.weather);
+
                 });
   };
 

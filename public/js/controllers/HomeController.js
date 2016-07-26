@@ -13,7 +13,13 @@
       console.log("latitude: ",latitude, " Longitude: ", longitude);
       WeatherService.getHourlyData(latitude, longitude);
     }
-    function updateMinutelyF(latitude, longitude){}
-    function updateDailyF(latitude, longitude){}
+    function updateMinutelyF(latitude, longitude){
+      console.log("latitude: ",latitude, " Longitude: ", longitude);
+      WeatherService.getMinutelyData(latitude, longitude);
+    }
+    function updateDailyF(latitude, longitude){
+      console.log("latitude: ",latitude, " Longitude: ", longitude);
+      WeatherService.getDailyData(latitude, longitude);
+    }
   }
 })();
