@@ -8,6 +8,10 @@
 
       $scope.hourlyData = WeatherService.weather;
       console.log("$scope.hourlyData: ", $scope.hourlyData);
+      $scope.summaryLookup = {
+        'Drizzle': 'There will be some drizzle',
+        
+      }
 
       $scope.$watch(function(){
         return WeatherService.weather;
