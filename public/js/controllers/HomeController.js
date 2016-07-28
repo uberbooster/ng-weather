@@ -8,8 +8,9 @@
     $scope.updateHourly = updateHourlyF;
     $scope.updateMinutely = updateMinutelyF;
     $scope.updateDaily = updateDailyF;
-    $scope.latitude=29;
-    $scope.longitude=-82;
+    $scope.latitude=29.6516;
+    $scope.longitude=-82.3248;
+
 
     function updateHourlyF(latitude, longitude){
       console.log("latitude: ",latitude, " Longitude: ", longitude);
