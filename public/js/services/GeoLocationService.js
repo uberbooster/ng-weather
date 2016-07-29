@@ -16,7 +16,7 @@ function GeoLocationServiceF($http){
   function getLocationDataF(location){
     return $http.get(baseUrlGoogleLocationToCoordinates + location)
       .then(function(response){
-        console.log('GeoLocation Response:', response)
+        console.log('GeoLocationService Response:', response)
         service.formattedAddress = response.data.results[0].formatted_address;
         console.log("response.data.results[0].geometry.location; ",response.data.results[0].geometry.location);
         return response.data.results[0].geometry.location;

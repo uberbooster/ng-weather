@@ -2,9 +2,9 @@
   angular.module('ngWeather')
          .controller('DailyController', DailyControllerF);
 
-  DailyControllerF.$inject = ['$scope', 'WeatherService'];
+  DailyControllerF.$inject = ['$scope', 'WeatherService', 'GeoLocation'];
 
-  function DailyControllerF($scope, WeatherService){
+  function DailyControllerF($scope, WeatherService, GeoLocation){
     $scope.dailyData = WeatherService.weather;
     console.log("$scope.dailyData: ", $scope.dailyData);
 
@@ -14,6 +14,12 @@
     },function(value){
       console.log("value: ", value);
       $scope.dailyData = value;
+    })
+    $scope.$watch(function(){
+      return GeoLocation.formattedAddress;
+    },function(value){
+      console.log("value: ", value);
+      $scope.formattedAddress = value;
     })
   }
 })();

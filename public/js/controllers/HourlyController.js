@@ -2,12 +2,12 @@
   angular.module('ngWeather')
          .controller('HourlyController', HourlyControllerF);
 
-  HourlyControllerF.$inject = ['$scope', 'WeatherService', 'GeoLocation'];
+  HourlyControllerF.$inject = ['$scope', 'WeatherService', 'GeoLocationService'];
 
-  function HourlyControllerF($scope, WeatherService, GeoLocation){
+  function HourlyControllerF($scope, WeatherService, GeoLocationService){
 
       $scope.hourlyData = WeatherService.weather;
-      $scope.formattedAddress = GeoLocation.formattedAddress;
+      $scope.formattedAddress = GeoLocationService.formattedAddress;
       console.log("$scope.hourlyData: ", $scope.hourlyData);
       console.log('$scope.formattedAddress', $scope.formattedAddress);
       $scope.summaryLookup = {
@@ -22,7 +22,7 @@
         $scope.hourlyData = value;
       })
       $scope.$watch(function(){
-        return GeoLocation.formattedAddress;
+        return GeoLocationService.formattedAddress;
       },function(value){
         console.log("value: ", value);
         $scope.formattedAddress = value;
