@@ -1,48 +1,93 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <h1>Latitude: {{hourlyData.latitude}}, Longitude: {{hourlyData.longitude}}</h1>
+    <div class="col-md-6 col-md-offset-3 well">
+      <h3>Latitude: {{hourlyData.latitude | number:2 }}, Longitude: {{hourlyData.longitude | number:2 }}</h3>
+      <h3>Location: {{formattedAddress}}</h3>
     </div>
   </div>
-  <div class="row" ng-repeat="card in hourlyData.hourly.data">
-    <div class="col-md-8 col-md-offset-2 well">
+  <div class="row well" style="background-color: lightblue;" ng-repeat="card in hourlyData.hourly.data">
+    <div class="col-md-2 col-md-offset-1">
+      <img ng-src="/images/{{card.icon}}.png" alt="" height="100" width="100">
+    </div>
+    <div class="col-md-8">
       <div class="row">
-        <div class="col-md-4">
-          <img ng-src="/images/{{card.icon}}.png" alt="" height="128" width="128">
-          {{card.icon}}
+        <div class="col-md-3">
+          <h2 class="text-center">{{card.temperature | number:0 }}&deg;F&nbsp;&nbsp;</h2>
+          <h4 class="text-center" style="color:blue;">(Feels like {{card.apparentTemperature | number:0 }}&deg;F)</h4>
         </div>
-        <div class="col-md-4">
-          <h3>
-            Temperature: {{card.temperature}}&deg;F
-          </h3>
+        <div class="col-md-3">
+          <h3>Chance of rain: {{ card.precipProbability*100 | number:0 }}%</h3>
         </div>
-        <div class="col-md-4">
-          <h4>
-            {{card.time*1000 | date:'M/d/yy h:mm a'}}
-          </h4>
+        <div class="col-md-3">
+          <h3>Humidity: {{ card.humidity*100 | number:0}}%</h3>
         </div>
-      </div>
-      <div class="row">
-        Chance of rain: {{ card.precipProbability*100 | number:0 }}%
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">Humidity: {{ card.humidity*100 | number:0}}%</div>
-        <div class="col-md-6">
-          <h3>
-            {{ summaryLookup[card.summary] || card.summary }}
-          </h3>
+        <div class="col-md-3">
+          <h3>{{card.time*1000 | date:'EEE, M/d/yy h:mm a'}}</h3>
         </div>
       </div>
       <div class="row">
-        Wind Speed: {{ card.windSpeed }} mph
+        <div class="col-md-12">
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <img ng-src="/images/wd{{round(card.windBearing)}}.png" height="32" width="128">
+        </div>
+        <div class="col-md-2">
+          Wind Speed: {{ card.windSpeed }} mph
+        </div>
+        <div class="col-md-7">
+          {{ summaryLookup[card.summary] || card.summary }}
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 
-<h1>HOURLY!</h1>
+<!-- <div class="container">
+
+  <div class="row" >
+    <div class="col-md-8 col-md-offset-2 well">
+      <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+          <h4>
+            Temp:
+          </h4>
+        </div>
+        <div class="col-md-4">
+          <h4>
+
+          </h4>
+        </div>
+      </div>
+      <div class="row">
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+          <h3>
+
+          </h3>
+        </div>
+      </div>
+      <div class="row">
+
+
+        {{card.windBearing}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h1>HOURLY!</h1> -->
 
 <pre>
   {{ hourlyData | json }}
