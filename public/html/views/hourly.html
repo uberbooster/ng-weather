@@ -7,7 +7,7 @@
   </div>
   <div class="row well" style="background-color: lightblue;" ng-repeat="card in hourlyData.hourly.data">
     <div class="col-md-2 col-md-offset-1">
-      <img ng-src="/images/{{card.icon}}.png" alt="" height="100" width="100">
+      <img ng-src="/images/{{card.icon}}.png" alt="" height="125" width="125">
     </div>
     <div class="col-md-8">
       <div class="row">
@@ -16,13 +16,13 @@
           <h4 class="text-center" style="color:blue;">(Feels like {{card.apparentTemperature | number:0 }}&deg;F)</h4>
         </div>
         <div class="col-md-3">
-          <h3>Chance of rain: {{ card.precipProbability*100 | number:0 }}%</h3>
+          <h3 class="text-center">Chance of rain: {{ card.precipProbability*100 | number:0 }}%</h3>
         </div>
         <div class="col-md-3">
-          <h3>Humidity: {{ card.humidity*100 | number:0}}%</h3>
+          <h3 class="text-center">Humidity: {{ card.humidity*100 | number:0}}%</h3>
         </div>
         <div class="col-md-3">
-          <h3>{{card.time*1000 | date:'EEE, M/d/yy h:mm a'}}</h3>
+          <h3 class="text-center">{{card.time*1000 | date:'EEE, M/d/yy h:mm a'}}</h3>
         </div>
       </div>
       <div class="row">
@@ -35,10 +35,11 @@
           <img ng-src="/images/wd{{round(card.windBearing)}}.png" height="32" width="128">
         </div>
         <div class="col-md-2">
-          Wind Speed: {{ card.windSpeed }} mph
+          <h5 class="text-center">Wind Speed:</h5>
+          <h4 class="text-center">{{ card.windSpeed | number:0 }} mph</h4>
         </div>
         <div class="col-md-7">
-          {{ summaryLookup[card.summary] || card.summary }}
+          <h3 class="text-center">{{ summaryLookup[card.summary] || card.summary }}</h3>
         </div>
       </div>
     </div>
